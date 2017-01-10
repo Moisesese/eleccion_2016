@@ -1,0 +1,26 @@
+{% extends "eleccion/base.html" %}
+
+    {% block content %}
+    	<h1  class="page-header">Circunscripciones</h1>
+
+        {% if perms.eleccion.change_circunscripcion %}
+			<a href="crear/">Añadir Circunscripciones</a>
+		{% endif %}
+
+
+		<div class="row">
+
+			{% for x in object_list %}
+				<a href="{% url 'circunscripcion_detalle_url' x.id %}">
+					<div class="col-md-2 cajaBlanca">
+							<h4><strong>{{ x.nombre }}</strong></h4>
+							<small>Escaños: </small> <strong>{{ x.nEscanos }}</strong>				
+					</div>
+				</a>
+			{% empty %}
+	    			<li>No hay circunscripciones aún.</li>
+			{% endfor %}
+
+		</div>
+
+    {% endblock %}

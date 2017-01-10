@@ -1,0 +1,24 @@
+{% extends "eleccion/base.html" %}
+
+    {% block content %}
+    	<h1  class="page-header">Resultados</h1>
+
+        {% if perms.eleccion.change_resultado %}
+			<a href="crear/">Añadir Resultado</a>
+		{% endif %}
+
+
+		<div class="row">
+			<ul>
+				{% for x in object_list %}
+					<li>{{x.partido}}</li>
+					<li>{{x.mesa}}</li>
+					<li>Nº Votos:  {{x.nVotos}}</li>
+					<hr>
+				{% empty %}
+		    		<li>No hay Resultados aún.</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+    {% endblock %}

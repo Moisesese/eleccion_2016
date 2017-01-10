@@ -1,0 +1,27 @@
+{% extends "eleccion/base.html" %}
+
+    {% block content %}
+
+    	<div class="row">
+        	<div class="col-md-9">	
+				<h1 class="page-header">Vista Detallada de Mesa</h1>
+				
+				{% if mesa %}
+
+					<p>Nombre de la Mesa:  <strong style="font-size:24px"> {{ mesa.nombre }}</strong></p>
+					<p>Circunscripcion de la Mesa:  <strong style="font-size:24px">{{ mesa.circunscripcion }} </strong></p>
+
+	  				<div class="col-md-4">
+        				{% if perms.eleccion.change_mesa %}
+							<a href="{% url 'mesa_editar_url' mesa.id %}" class="btn btn-default">Editar</a>
+						{% endif %}
+					</div>
+
+				{% else %}
+					<p>La Mesa que se ha enlazado <strong>NO</strong> existe</p>
+				{% endif %}
+			</div>
+
+		</div>
+
+    {% endblock %}

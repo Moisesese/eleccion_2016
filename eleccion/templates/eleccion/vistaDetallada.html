@@ -1,0 +1,37 @@
+{% extends "eleccion/base.html" %}
+
+    {% block content %}
+
+    	<div class="row">
+        	<div class="col-md-9">	
+				<h1 class="page-header">Vista Detallada</h1>
+				
+				<p>Nombre de la Circunscripción:  <strong style="font-size:24px"> {{ circunscripcion.nombre }}</strong></p>
+				<p>Cantidad de Escaños:  <strong style="font-size:24px">{{ circunscripcion.nEscanos }} </strong></p>
+
+  				<div class="col-md-4">
+        			{% if perms.eleccion.change_circunscripcion %}
+						<a href="{% url 'editar_url' circunscripcion.id %}" class="btn btn-default">Editar</a>
+						<a href="{% url 'eliminar_url' circunscripcion.id %}" class="btn btn-danger" style="float:right">Eliminar</a>
+					{% endif %}
+				</div>
+
+			</div>
+
+        	<div class="col-md-3">	
+				<h3 class="page-header" style="padding-top: 13px;">Mesas Relacionadas</h3>
+				{% if listadoMesas%}
+
+					{% for x in listadoMesas %}
+					 	<li><a href ="{% url 'mesa_detalle_url' x.pk %}">{{x.nombre}}</a></li>
+					{% endfor %}
+
+				{% else %}
+
+					<p>La circunscripción de {{circunscripcion.nombre}} por el momento no tiene mesas asociadas</p>
+
+				{% endif %}
+			</div>
+
+		</div>
+    {% endblock %}

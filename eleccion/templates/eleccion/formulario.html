@@ -1,0 +1,10 @@
+{% extends "eleccion/base.html" %}
+
+	{% block content %}
+	    <h1 class="page-header">{{ titulo }}</h1>
+	    <form role="form" action="" method="post">
+	        {% csrf_token %}
+	        {{ form.as_p }}
+	        <button type="submit" class="btn btn-success">{{ nombre_btn }}</button>
+	    </form>
+	{% endblock %}

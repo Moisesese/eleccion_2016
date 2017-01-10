@@ -1,0 +1,18 @@
+{% extends "eleccion/base.html" %}
+
+    {% block content %}
+        <h1 class="page-header">Gestor Electoral</h1>
+
+		{% if user.is_authenticated %}
+        	<p>Ud. Está logueado como <strong style="color:#03bb03;">{{user.username}}</strong></p>
+        {% else %}
+        	<p>Ud. Está en modo <strong style="color:orange;">anónimo</strong>, para disfrutar de todas las opciones, por favor, identifíquese.</p>
+        {% endif %}
+
+        <div class="jumbotron">
+        	<h1 class="display-3">Consideraciones generales</h2>
+        	<p>Bienvenido al sistema de gestión electoral</p>
+
+        </div>
+
+    {% endblock %}

@@ -1,0 +1,20 @@
+{% extends "eleccion/base.html" %}
+
+    {% block content %}
+        <h1 class="page-header">Login to Elecciones</h1>
+
+        <div class="jumbotron">
+            <h2 class="form-signin-heading">Por favor identifíquese</h2>
+
+            <form id="login_form" method="post" action="/login/" class="form-signin">
+                {% csrf_token %}
+                <p>Usuario:</p><input class="form-control" placeholder="Nombre de usuario" type="text" name="username" value="" size="50" required autofocus=""/>
+                <br />
+                <p>Password:</p> <input class="form-control" placeholder="Password" type="password" name="password" value="" size="50" />
+                <br />
+
+                <input class="btn btn-primary" type="submit" value="Enviar" />
+            </form>
+        </div>
+        
+    {% endblock %}
